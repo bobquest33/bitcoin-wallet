@@ -24,7 +24,7 @@ dependencies {
 }
 
 ext {
-    archivesBaseName = 'bitcoin-wallet'
+    archivesBaseName = 'litecoin-wallet'
 }
 
 android {
@@ -34,6 +34,10 @@ android {
     lintOptions {
         abortOnError false
         disable 'MissingTranslation'
+    }
+
+    defaultConfig {
+        applicationId 'de.thrasher.wallet'
     }
 
     buildTypes {
