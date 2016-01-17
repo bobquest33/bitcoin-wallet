@@ -25,7 +25,7 @@ import org.bitcoinj.core.Coin;
 import org.bitcoinj.core.ECKey;
 import org.bitcoinj.core.Transaction;
 import org.bitcoinj.core.Wallet;
-import org.bitcoinj.core.WalletEventListener;
+import org.bitcoinj.core.listeners.WalletEventListener;
 import org.bitcoinj.script.Script;
 
 import android.os.Handler;

@@ -21,11 +21,11 @@ import java.util.Collections;
 import java.util.Comparator;
 import java.util.List;
 
-import org.bitcoinj.core.AbstractWalletEventListener;
+import org.bitcoinj.core.listeners.AbstractWalletEventListener;
 import org.bitcoinj.core.Address;
 import org.bitcoinj.core.ECKey;
 import org.bitcoinj.core.Wallet;
-import org.bitcoinj.core.WalletEventListener;
+import org.bitcoinj.core.listeners.WalletEventListener;
 import org.bitcoinj.uri.BitcoinURI;
 import org.bitcoinj.utils.Threading;
 import org.slf4j.Logger;

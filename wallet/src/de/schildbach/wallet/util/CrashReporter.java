@@ -215,7 +215,7 @@ public class CrashReporter
 		report.append("Network: " + Constants.NETWORK_PARAMETERS.getId() + "\n");
 		final Wallet wallet = application.getWallet();
 		report.append("Encrypted: " + wallet.isEncrypted() + "\n");
-		report.append("Keychain size: " + wallet.getKeychainSize() + "\n");
+		report.append("Keychain size: " + wallet.getKeyChainGroupSize() + "\n");
 		final DevicePolicyManager devicePolicyManager = (DevicePolicyManager) application.getSystemService(Context.DEVICE_POLICY_SERVICE);
 		report.append("Storage Encryption Status: " + devicePolicyManager.getStorageEncryptionStatus() + "\n");
 
