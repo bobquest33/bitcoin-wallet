@@ -181,7 +181,7 @@ public class WalletUtils
 	{
 		try
 		{
-			final Wallet wallet = new WalletProtobufSerializer().readWallet(is);
+			final Wallet wallet = new WalletProtobufSerializer().readWallet(Constants.NETWORK_PARAMETERS, null, WalletProtobufSerializer.parseToProto(is));
 
 			if (!wallet.getParams().equals(expectedNetworkParameters))
 				throw new IOException("bad wallet network parameters: " + wallet.getParams().getId());
@@ -350,7 +350,7 @@ public class WalletUtils
 		try
 		{
 			final ByteArrayInputStream is = new ByteArrayInputStream(walletBytes);
-			final Wallet wallet = new WalletProtobufSerializer().readWallet(is);
+			final Wallet wallet = new WalletProtobufSerializer().readWallet(Constants.NETWORK_PARAMETERS, null, WalletProtobufSerializer.parseToProto(is));
 			is.close();
 			return wallet;
 		}

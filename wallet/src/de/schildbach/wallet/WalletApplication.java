@@ -256,7 +256,7 @@ public class WalletApplication extends Application
 			{
 				walletStream = new FileInputStream(walletFile);
 
-				wallet = new WalletProtobufSerializer().readWallet(walletStream);
+				wallet = new WalletProtobufSerializer().readWallet(Constants.NETWORK_PARAMETERS, null, WalletProtobufSerializer.parseToProto(walletStream));
 
 				if (!wallet.getParams().equals(Constants.NETWORK_PARAMETERS))
 					throw new UnreadableWalletException("bad wallet network parameters: " + wallet.getParams().getId());
@@ -272,6 +272,14 @@ public class WalletApplication extends Application
 				wallet = restoreWalletFromBackup();
 			}
 			catch (final UnreadableWalletException x)
+			{
+				log.error("problem loading wallet", x);
+
+				Toast.makeText(WalletApplication.this, x.getClass().getName(), Toast.LENGTH_LONG).show();
+
+				wallet = restoreWalletFromBackup();
+			}
+			catch (IOException x)
 			{
 				log.error("problem loading wallet", x);
 
@@ -324,7 +332,7 @@ public class WalletApplication extends Application
 		{
 			is = openFileInput(Constants.Files.WALLET_KEY_BACKUP_PROTOBUF);
 
-			final Wallet wallet = new WalletProtobufSerializer().readWallet(is);
+			final Wallet wallet = new WalletProtobufSerializer().readWallet(Constants.NETWORK_PARAMETERS, null, WalletProtobufSerializer.parseToProto(is));
 
 			if (!wallet.isConsistent())
 				throw new Error("inconsistent backup");
