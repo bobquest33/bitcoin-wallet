@@ -38,6 +38,10 @@ android {
 
     defaultConfig {
         applicationId 'de.thrasher.wallet'
+        versionCode 234
+        versionName '4.44'
+        minSdkVersion 15
+        targetSdkVersion 22
     }
 
     buildTypes {
@@ -47,6 +51,15 @@ android {
         }
         debug {
             debuggable true
+        }
+    }
+
+    productFlavors {
+        _testnet {
+            applicationId 'de.thrasher.wallet.test'
+        }
+        _mainnet {
+            applicationId 'de.thrasher.wallet'
         }
     }
 
