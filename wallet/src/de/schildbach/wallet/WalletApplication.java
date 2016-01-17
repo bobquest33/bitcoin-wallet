@@ -31,6 +31,7 @@ import org.bitcoinj.core.VersionMessage;
 import org.bitcoinj.core.Wallet;
 import org.bitcoinj.crypto.LinuxSecureRandom;
 import org.bitcoinj.crypto.MnemonicCode;
+import org.bitcoinj.params.Networks;
 import org.bitcoinj.store.UnreadableWalletException;
 import org.bitcoinj.store.WalletProtobufSerializer;
 import org.bitcoinj.utils.Threading;
@@ -99,6 +100,8 @@ public class WalletApplication extends Application
 		Threading.throwOnLockCycles();
 
 		log.info("=== starting app using configuration: {}, {}", Constants.TEST ? "test" : "prod", Constants.NETWORK_PARAMETERS.getId());
+
+		Networks.register(Constants.NETWORK_PARAMETERS);
 
 		super.onCreate();
 
